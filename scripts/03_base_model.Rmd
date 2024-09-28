@@ -13,6 +13,8 @@ library(cowplot)
 library(akima)
 ```
 
+# Note. Input parameters are set in script '02_base_parameters' and can be adjusted.
+
 # Non-Cooperative Scenario
 
 ```{r}
@@ -304,7 +306,7 @@ results <- df_results_non_bind %>% left_join(df_results_so_bind, by= c("x_a_init
 
 results_compare <- results %>% select(x_a_init, x_b_init, x_a_non, h_a_non, e_hat_a, x_a_so, h_a_so, e_star_a, x_a_soa, h_a_soa, e_a_star, NPV_a_hat, NPV_a_star, NPV_ea_star, WTP_A, diff_coop, export_rate) %>% distinct()
 
-#write.csv(results, here("data","outputs","high_high","high_high_original.csv"), row.names=FALSE)
+write.csv(results, here("data","outputs","base_model.csv"), row.names=FALSE)
 
 ```
 
