@@ -1,5 +1,4 @@
-
-# Theta Model, All Movement, All Dispersal
+# Note: Dispersal and movement parameters can be adjusted to run over a shorter sequence within 0 to 1 in 0.1 increments, to reduce run time. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -12,9 +11,6 @@ library(reshape2)
 library(cowplot)
 library(akima)
 ```
-
-
-# Note: Dispersal and movement parameters can be adjusted to run over a shorter sequence within 0 to 1 in 0.1 increments, to reduce run time. 
 
 # Non-Cooperative Scenario
 
@@ -111,7 +107,7 @@ df_results_non = as.data.frame(results_matrix_non) %>% filter(timestep==100) %>%
 
 ```
 
-# Cooperative Scenario (Sole Owner Both Patches Scenario)
+# Cooperative Scenario (Sole Owner Scenario)
 
 ```{r}
 
@@ -240,7 +236,7 @@ df_inf = df_all %>% filter(time==1) %>% select(-time, -V_star)
 
 ```
 
-#II. Sole Owner Patch A (Reserve Scenario)
+#II. Marine Reserve Scenario
 
 ```{r}
 
