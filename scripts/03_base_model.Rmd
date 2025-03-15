@@ -95,7 +95,7 @@ df_results_non = as.data.frame(results_matrix_non) %>% filter(timestep==100) %>%
 
 ```
 
-# Cooperative Scenario (Sole Owner Both Patches Scenario)
+# Cooperative Scenario (Sole Owner Scenario)
 
 ```{r}
 
@@ -179,7 +179,7 @@ df_results_so = as.data.frame(results_matrix_so)  %>% filter(timestep==100) %>% 
 ```
 
 
-#II. Sole Owner Patch A (Reserve Scenario)
+#II. Marine Reserve Scenario
 
 ```{r}
 
