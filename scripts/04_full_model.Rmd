@@ -14,7 +14,7 @@ library(akima)
 ```
 
 
-# Note: For ease and model run time, all dispersal and movement parameters are set to 0.2. These parameters can be adjusted to run over the full sequence from 0 to 1 in 0.1 increments, as necessary. 
+# Note: Dispersal and movement parameters can be adjusted to run over a shorter sequence within 0 to 1 in 0.1 increments, to reduce run time. 
 
 # Non-Cooperative Scenario
 
@@ -22,7 +22,7 @@ library(akima)
 
 # Initialize data frame for storing results
 
-num_rows <- length(x_a_grid) * length(x_b_grid) * timesteps * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1)) 
+num_rows <- length(x_a_grid) * length(x_b_grid) * timesteps * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1)) 
 num_cols <- 13  
 results_matrix_non <- matrix(NA_real_, nrow = num_rows, ncol = num_cols)
 colnames(results_matrix_non) <- c("M_ab", "M_ba", "D_ab", "D_ba", "timestep", "x_a_init", "x_a", "e_hat_a", "x_b_init", "x_b", "e_hat_b", "NPV_a_hat", "NPV_b_hat")
@@ -35,10 +35,10 @@ NPV_b_hat_total <- numeric(length = length(x_a_grid) * length(x_b_grid))
 names(NPV_a_hat_total) <- paste0("x_a", 1:length(x_a_grid), "_x_b", 1:length(x_b_grid))
 names(NPV_b_hat_total) <- paste0("x_a", 1:length(x_a_grid), "_x_b", 1:length(x_b_grid))
 
-for(M_ab in seq(0.2, 0.2, by = 0.1)) {
-  for(M_ba in seq(0.2, 0.2, by = 0.1)) {
-    for(D_ab in seq(0.2, 0.2, by = 0.1)) {
-      for(D_ba in seq(0.2, 0.2, by = 0.1)) {
+for(M_ab in seq(0, 1, by = 0.1)) {
+  for(M_ba in seq(0, 1, by = 0.1)) {
+    for(D_ab in seq(0, 1, by = 0.1)) {
+      for(D_ba in seq(0, 1, by = 0.1)) {
       
         # Recalculate dependent variables
         M_aa = 1 - M_ab
@@ -117,7 +117,7 @@ df_results_non = as.data.frame(results_matrix_non) %>% filter(timestep==100) %>%
 
 # Initialize data frame for storing results
 
-num_rows <- length(x_a_grid) * length(x_b_grid) * timesteps * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1)) * length(seq(0.2, 0.2, by = 0.1))
+num_rows <- length(x_a_grid) * length(x_b_grid) * timesteps * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1)) * length(seq(0, 1, by = 0.1))
 num_cols <- 13  
 results_matrix_so <- matrix(NA_real_, nrow = num_rows, ncol = num_cols)
 colnames(results_matrix_so) <- c("M_ab", "M_ba", "D_ab", "D_ba", "timestep", "x_a_init", "x_a", "e_star_a", "x_b_init", "x_b", "e_star_b", "NPV_a_star", "NPV_b_star")
@@ -130,10 +130,10 @@ NPV_b_star_total <- numeric(length = length(x_a_grid) * length(x_b_grid))
 names(NPV_a_star_total) <- paste0("x_a", 1:length(x_a_grid), "_x_b", 1:length(x_b_grid))
 names(NPV_b_star_total) <- paste0("x_a", 1:length(x_a_grid), "_x_b", 1:length(x_b_grid))
 
-for(M_ab in seq(0.2, 0.2, by = 0.1)) {
-  for(M_ba in seq(0.2, 0.2, by = 0.1)) {
-    for(D_ab in seq(0.2, 0.2, by = 0.1)) {
-      for(D_ba in seq(0.2, 0.2, by = 0.1)) {
+for(M_ab in seq(0, 1, by = 0.1)) {
+  for(M_ba in seq(0, 1, by = 0.1)) {
+    for(D_ab in seq(0, 1, by = 0.1)) {
+      for(D_ba in seq(0, 1, by = 0.1)) {
       
         # Recalculate dependent variables
         M_aa = 1 - M_ab
@@ -248,11 +248,11 @@ df_inf = df_all %>% filter(time==1) %>% select(-time, -V_star)
 num_combinations <- length(x_a_grid) * length(x_b_grid)
 num_time_steps <- timesteps 
 
-# Calculate the number of iterations over M_ba and M_ab
-num_M_ba_iterations <- length(seq(0.2, 0.2, by = 0.1))
-num_M_ab_iterations <- length(seq(0.2, 0.2, by = 0.1))
-num_D_ba_iterations <- length(seq(0.2, 0.2, by = 0.1))
-num_D_ab_iterations <- length(seq(0.2, 0.2, by = 0.1))
+# Calculate the number of iterations over M_ba, M_ab, D_ba and D_ab
+num_M_ba_iterations <- length(seq(0, 1, by = 0.1))
+num_M_ab_iterations <- length(seq(0, 1, by = 0.1))
+num_D_ba_iterations <- length(seq(0, 1, by = 0.1))
+num_D_ab_iterations <- length(seq(0, 1, by = 0.1))
 
 # Calculate the maximum number of rows needed
 max_rows <- num_combinations * num_time_steps * num_M_ba_iterations * num_M_ab_iterations * num_D_ba_iterations * num_D_ab_iterations
@@ -276,10 +276,10 @@ for(i in seq_along(x_a_grid)) {
     x_a_init <- x_a_grid[i]
     x_b_init <- x_b_grid[j]
     
- for(M_ab in seq(0.2, 0.2, by = 0.1)) {
-  for(M_ba in seq(0.2, 0.2, by = 0.1)) {
-    for(D_ab in seq(0.2, 0.2, by = 0.1)) {
-      for(D_ba in seq(0.2, 0.2, by = 0.1)) {
+ for(M_ab in seq(0, 1, by = 0.1)) {
+  for(M_ba in seq(0, 1, by = 0.1)) {
+    for(D_ab in seq(0, 1, by = 0.1)) {
+      for(D_ba in seq(0, 1, by = 0.1)) {
       
         # Recalculate dependent variables
         M_aa = 1 - M_ab
