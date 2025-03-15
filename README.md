@@ -1,5 +1,6 @@
-# bilateral_marine_reserves
-Scripts and other files relevant to the bilateral marine reserve agreement study are detailed.
+# Bilateral marine reserve agreements
+
+Scripts and other files relevant to *Bilateral marine reserve agreements* (Lawson and Costello, 2025) are detailed here.
 
 # 'scripts' Folder contains key scripts for basic and full model.
 '0_1 functions' contains the functions used for the base and full model.
