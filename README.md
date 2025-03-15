@@ -2,7 +2,23 @@
 
 Scripts and other files relevant to *Bilateral marine reserve agreements* (Lawson and Costello, 2025) are detailed here.
 
-# 'scripts' Folder contains key scripts for basic and full model.
+## Within 'scripts' folder the script '01_functions' loads all functions.
+This script runs all functions that are necessary to run the model.
+
+General Functions are:
+* e_i are the escapement function.
+* h_i is the harvest function.
+* growth_i is the patch-specific growth function.
+* next_x_i is the size of the stock in the next time step.
+* b_i is the marginal profit function.
+
+Scenario Functions are:
+* compute_e_star returns escapement under the sole owner scenario.
+* compute_e_hat returns escapement under the non-cooperative scenario.
+* pi_a returns the current period profit in Patch A.
+* payoff returns the net present value to each Patch.
+* compute_e_a_star uses a generalized additive model to predict e_a_star.
+
 '0_1 functions' contains the functions used for the base and full model.
 '0_2 base parameters' sets basic model parameters
   k_a is the carrying capacity of Patch A
