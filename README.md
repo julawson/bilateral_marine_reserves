@@ -52,4 +52,10 @@ Other Parameters:
 
 All of '01_functions', and '02_base_params' should be run prior to running the 'Base Params for Dynamic Programming Grid' 
 
-## Within 'scripts' folder the script '03_base_model_rev' 
+## Within 'scripts' folder the script '03_base_model' 
+
+This script runs all three scenarios (non-cooperative, sole owner, and bilateral marine reserve) using a set of parameters as specified in *02_base_params*
+
+## Within the 'scripts' folder the script '04_full_model'
+
+This script runs all three scenarios (non-cooperative, sole owner, and bilateral marine reserve) while varying adult (*M_ba*, *M_ab*) and larval (*D_ba*, *D_ba*) movement parameters from 0 to 1 in 0.1 increments. 
